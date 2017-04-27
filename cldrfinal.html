@@ -1,0 +1,173 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="author" content="ravalika" />
+        <meta name="description" content="JavaScript accept user input demo" />
+        <meta name="keywords" content="JavaScript, UserInput" />
+        <title>day of date</title>
+        <script type="text/javascript">
+            function displayOutput()
+			{
+			alert("welcome!");
+			var i,input1,input2,input3,sum,year1,year2,year3,result=0,year,mrk;
+                var input1 = Number(document.getElementById("datevalue").value);
+				var input2 = Number(document.getElementById("monthvalue").value);
+				var input3 = Number(document.getElementById("yearvalue").value);
+				year=input3;
+				document.getElementById("answer1").value= input1;
+				document.getElementById("answer2").value= input2;
+				document.getElementById("answer3").value= input3;
+                if ((input1<=0)||(input2<=0)||(input3<=0)) 
+				{
+                    alert("Please enter a valid input");
+                    return;
+                }
+				if (input1>31) 
+				{
+                    alert("Please enter the date between 1 and 31");
+                    return;
+                }
+				if (input2>12)
+				{
+                    alert("Please enter the month between 1 and 12");
+                    return;
+                }
+				if (input2==2) 
+				{
+				    if(input1>29)
+					{
+                      alert("Please enter the date between 1 and 29");
+                      return;
+					}
+					if(input3%4!=0)
+					{
+					  if(input1>28)
+					 {
+                      alert("Please enter the date between 1 and 28.                                    In this year there is no Feb 29  :(");
+                      return;
+					 }
+					}
+                }
+				if ((input2==4)||(input2==6)||(input2==9)||(input2==11)) 
+				{
+				    if(input1>30)
+					{
+                      alert("Please enter the date between 1 and 30 because this month doesn't have 31");
+                      return;
+					}
+                }
+				if (input3<1100) 
+				{
+                    alert("Please enter the year greater than 1100 or 1100");
+                    return;
+                }
+				//alert("welcome!");
+				a=new Array(13);
+				a[0]=0
+				a[1]=1
+				a[2]=4
+				a[3]=4
+				a[4]=0
+				a[5]=2
+				a[6]=5
+				a[7]=0
+				a[8]=3
+				a[9]=6
+				a[10]=1
+				a[11]=4
+				a[12]=6
+				b=new Array(4);
+				b[0]=6
+				b[1]=4
+				b[2]=2
+				b[3]=0
+	year1=input3%100;
+	year2=year1/4;
+	input3=input3-year1;
+	input3=input3/100;
+	year3=input3%4;
+	sum=input1+a[input2]+year1+year2+b[year3];
+	if(year%4==0)
+	{
+	  if((input2==1)||(input2==2))
+	    sum=sum-1;
+	}
+	result=sum%7;
+    if(result>=1)
+	{
+	  if(result<2)
+	  {
+       alert("it's Sunday");
+	   mrk="Sunday";
+	  }
+     else if(result>=2)
+	 {
+	  if(result<3)
+	  {
+       alert("it's Monday");
+	   mrk="Monday";
+	  }
+	  else if(result>=3)
+	  {
+	    if(result<4)
+		 {
+         alert("it's Tuesday");
+		 mrk="Tuesday";
+	     }
+		 else if(result>=4)
+	      {
+	         if(result<5)
+			 {
+               alert("it's Wednesday");
+			   mrk="Wednesday";
+			   }
+			else if(result>=5)
+				{
+					if(result<6)
+					{
+					  alert("it's Thursday");
+					  mrk="Thursday";
+					  }
+					else if(result>=6)
+					{
+						if(result<7)
+						{
+						alert("it's Friday");
+						mrk="Friday";
+						}
+						else if(result>=0)
+						{
+							if(result<1)
+							{
+							alert("it's saturday");
+							mrk="saturday";
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}	
+			    document.getElementById("result1").innerHTML = "You have entered " + input1;
+			    document.getElementById("result2").innerHTML = "You have entered " + input2;
+				 document.getElementById("result3").innerHTML = "You have entered " + year;
+				 document.getElementById("result4").innerHTML = "day of your date is " + mrk +"  :)";
+            }
+        </script>
+    </head>
+    <body background="mycldr.jpg">
+	<center>
+        <h1 id="result1">date of day</h1>
+		<h1 id="result2">month of day</h1>
+		<h1 id="result3">year of day</h1>
+        DATE:<input type="number" id="datevalue" min="1" max="31">
+		MONTH:<input type="number" id="monthvalue" min="1" max="12">
+		YEAR:<input type="number" id="yearvalue" min="1100"></br></br>
+        <button onclick="displayOutput()">get results!</button></br></br>
+		<input id="answer1"><input id="answer2"><input id="answer3"><br>
+		<h1 id="result4">the day is...</h1>
+		</center>
+    </body>
+    </html>
